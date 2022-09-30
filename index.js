@@ -1,6 +1,6 @@
-import fetch from "cross-fetch";
-import express from "express";
-import cors from "cors";
+const fetch = require("cross-fetch");
+const express = require("express");
+const cors = require("cors");
 
 const app = express();
 
@@ -29,5 +29,7 @@ app.get("/id/:id", async (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log("Listening on port :3000");
+  console.log("Listening on port http://localhost:3000");
 });
+
+module.exports = app;
