@@ -1,13 +1,16 @@
 import fetch from "cross-fetch";
 import express from "express";
+import cors from "cors";
 
 const app = express();
 
 const apiUrl = "https://discord.com/api/v10/users/";
 const TOKEN = process.env.TOKEN;
 
+app.use(cors());
+
 app.get("/", (req, res) => {
-  res.send("Hello");
+  res.send("Discord Id Lookup");
 });
 
 app.get("/id/:id", async (req, res) => {
@@ -22,7 +25,7 @@ app.get("/id/:id", async (req, res) => {
 
   const response = await r.json();
 
-  res.status(200).json(response);
+  res.status(r.status).json(response);
 });
 
 app.listen(3000, () => {
